@@ -1,12 +1,25 @@
-
 const inputDate = document.getElementById('date');
 const date2023 = new Date();
-let old = document.getElementById('yearsOld');
+const old = document.getElementById('yearsOld');
+const validate = document.getElementById('validate');
 
-const input = inputDate.value
-const yearDate = inputDate.slice(0,4)
+validate.addEventListener('click', validationYearsOld);
 
-if (yearDate - date2023 >= 18) {
-    old.textContent = 'es mayor de edad'
+function validationYearsOld() {
+    const input = inputDate.value;
+    const dateBorn = new Date(input);
+    const yearActual = date2023.getFullYear();
+    const yearBorn = parseInt(input.slice(0, 4));
+
+    if (yearActual - yearBorn >= 18) {
+        old.textContent = 'Es mayor de edad en Colombia';
+    } else if (yearActual - yearBorn < 18) {
+        old.textContent = 'Es menor de edad en Colombia';
+    }
 }
+
+
+
+
+
 
